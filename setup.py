@@ -3,20 +3,16 @@
 pymercure is a library to interact with Mercure pub/sub service
 Usage
 -----
-Usage is simple::
-    import grequests
-    urls = [
-        'http://www.heroku.com',
-        'http://tablib.org',
-        'http://httpbin.org',
-        'http://python-requests.org',
-        'http://kennethreitz.com'
-    ]
-Create a set of unsent Requests::
-    >>> rs = (grequests.get(u) for u in urls)
-Send them all at the same time::
-    >>> grequests.map(rs)
-    [<Response [200]>, <Response [200]>, <Response [200]>, <Response [200]>, <Response [200]>]
+import json
+
+from publisher.sync import SyncPublisher
+
+a = json.dumps({'status': 'Working from Python async'})
+p = SyncPublisher(
+    'http://localhost:3000/hub',
+    'your.Token.Here'
+)
+print(p.publish(['mytopicname'], a))
 """
 
 from setuptools import setup

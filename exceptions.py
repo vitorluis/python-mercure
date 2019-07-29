@@ -6,3 +6,7 @@
 
 class PublishRejectedError(Exception):
     pass
+
+
+class UnauthorizedPublisherError(Exception):
+    pass
