@@ -1,4 +1,4 @@
-GRequests is written and maintained by Vitor Villar
+Pymercure is written and maintained by Vitor Villar
 
 Development Lead
 ````````````````
