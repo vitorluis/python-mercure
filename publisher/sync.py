@@ -4,7 +4,7 @@
 """
 import requests
 
-from exceptions import PublishRejectedError, UnauthorizedPublisherError
+from ..exceptions import PublishRejectedError, UnauthorizedPublisherError
 from .publisher import Publisher
 
 
