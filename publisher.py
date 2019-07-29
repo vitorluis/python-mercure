@@ -6,6 +6,8 @@ import urllib
 
 import requests
 
+from exceptions import PublishRejectedError
+
 
 class Publisher:
     mercure_hub = None
@@ -39,6 +41,7 @@ class Publisher:
             'Authorization': 'Bearer ' + self.mercure_jwt,
             'Content-Type': 'application/x-www-form-urlencoded'
         }
+
         form_data = {
             'topic': topics,
             'data': data
@@ -46,5 +49,8 @@ class Publisher:
 
         form_data = urllib.parse.urlencode(form_data, True)
         response = requests.post(self.mercure_hub, form_data, headers=headers)
+
+        if response.status_code == 403:
+            raise PublishRejectedError(response.text)
 
         return str(response.text)
