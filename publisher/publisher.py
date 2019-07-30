@@ -3,10 +3,11 @@
 @author: Vitor Villar <vitor.luis98@gmail.com>
 """
 import urllib
+from abc import ABC, abstractmethod
 
 import requests
-from abc import ABC, abstractmethod
-from exceptions import PublishRejectedError, UnauthorizedPublisherError
+
+from ..exceptions import PublishRejectedError, UnauthorizedPublisherError
 
 
 class Publisher(ABC):

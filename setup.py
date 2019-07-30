@@ -15,7 +15,7 @@ p = SyncPublisher(
 print(p.publish(['mytopicname'], a))
 """
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='pymercure',
@@ -37,6 +37,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms='any',
+    packages=find_packages(exclude=['tests']),
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
