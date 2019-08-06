@@ -1,32 +1,23 @@
 # -*- coding: utf-8 -*-
-"""
-pymercure is a library to interact with Mercure pub/sub service
-Usage
------
-import json
-
-from publisher.sync import SyncPublisher
-
-a = json.dumps({'status': 'Working from Python sync'})
-p = SyncPublisher(
-    'http://localhost:3000/hub',
-    'your.Token.Here'
-)
-m = Message(['mytopicname'], a)
-print(p.publish(m))
-"""
+from os import path
 
 from setuptools import setup, find_packages
 
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'pymercure/README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
+
 setup(
     name='pymercure',
-    version='0.0.1',
+    version='0.0.1.0',
     url='https://github.com/vitorluis/python-mercure',
     license='BSD',
     author='Vitor Villar',
     author_email='vitor.luis98@gmail.com',
     description='Mercure Python library',
-    long_description=__doc__,
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     install_requires=[
         'grequests',
         'requests',
