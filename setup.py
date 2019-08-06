@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-from os import path
+"""
+https://github.com/vitorluis/python-mercure
+"""
 
 from setuptools import setup, find_packages
-
-this_directory = path.abspath(path.dirname(__file__))
-with open(path.join(this_directory, 'pymercure/README.md'), encoding='utf-8') as f:
-    long_description = f.read()
-
 
 setup(
     name='pymercure',
@@ -15,9 +12,9 @@ setup(
     license='BSD',
     author='Vitor Villar',
     author_email='vitor.luis98@gmail.com',
-    description='Mercure Python library',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
+    description='Python Mercure library',
+    long_description=__doc__,
+    long_description_content_type='text/plain',
     install_requires=[
         'grequests',
         'requests',
