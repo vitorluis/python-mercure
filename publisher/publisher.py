@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+@author: Vitor Villar <vitor.luis98@gmail.com>
+"""
 import urllib
 from abc import ABC, abstractmethod
 

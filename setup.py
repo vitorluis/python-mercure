@@ -7,12 +7,13 @@ import json
 
 from publisher.sync import SyncPublisher
 
-a = json.dumps({'status': 'Working from Python async'})
+a = json.dumps({'status': 'Working from Python sync'})
 p = SyncPublisher(
     'http://localhost:3000/hub',
     'your.Token.Here'
 )
-print(p.publish(['mytopicname'], a))
+m = Message(['mytopicname'], a)
+print(p.publish(m))
 """
 
 from setuptools import setup, find_packages
