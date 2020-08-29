@@ -49,9 +49,9 @@ class Publisher(ABC):
         if type(message.data) is not str:
             raise TypeError('data must be a str')
 
-        # if target is available, check if its string
-        if message.target is not None and type(message.target) is not str:
-            raise TypeError('target  must be a string')
+        # if private is available, check if its bool
+        if message.private is not None and type(message.private) is not bool:
+            raise TypeError('private must be a bool')
 
         # if message_id is available, check if its string
         if message.message_id is not None and type(message.message_id) is not str:
@@ -87,8 +87,8 @@ class Publisher(ABC):
             'data': message.data
         }
 
-        if message.target is not None:
-            form_data['target'] = message.target
+        if message.private == True:
+            form_data['private'] = "on"
 
         if message.message_id is not None:
             form_data['id'] = message.message_id

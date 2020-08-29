@@ -10,9 +10,7 @@ so if you find any bug or chance of improvement, please open an issue to us. :)
 
 The library is available on PyPi, so you can install using pip:
 
-```bash
-pip3 install pymercure
-``` 
+     pip3 install pymercure
 
 ## Publishing Messages
 
@@ -20,6 +18,7 @@ As mentioned before, the goal is to provide a quick way to publish messages.
 And to do so, it's provided the Sync and Async classes.
  
 ### Sync publisher
+
 ```python
 import json
 from pymercure.publisher.sync import SyncPublisher
@@ -35,6 +34,7 @@ publisher.publish(msg)
 ```
 
 ### Async publisher
+
 ```python
 import json
 from pymercure.publisher.async import AsyncPublisher
@@ -43,7 +43,7 @@ from pymercure.message import Message
 data = json.dumps({'status': 'test'})
 msg = Message(['mytopicname'], data)
 publisher = AsyncPublisher(
-     'http://127.0.0.1:3000/hub',
+     'http://127.0.0.1:3000/.well-known/mercure',
      'your.Token.Here'
 )
 publisher.publish(msg)
@@ -63,7 +63,7 @@ def callback(message):
     print(message.data)
 
 
-c = Consumer('http://127.0.0.1:3000/hub', ['mytopicname'], callback)
+c = Consumer('http://127.0.0.1:3000/.well-known/mercure', ['mytopicname'], callback)
 c.start_consumption()
 ```
 
