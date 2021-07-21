@@ -16,13 +16,15 @@ class Consumer(Thread):
     topics = None
     sse_client = None
     callback = None
+    jwt_token = None
 
-    def __init__(self, mercure_hub, topics, callback):
+    def __init__(self, mercure_hub, topics, callback, jwt_token=None):
         super().__init__()
 
         self.mercure_hub = mercure_hub
         self.topics = topics
         self.callback = callback
+        self.jwt_token = jwt_token
 
     def start_consumption(self):
         """
@@ -49,7 +51,12 @@ class Consumer(Thread):
         :return requests.api: The response object
         """
         url = "{}?{}".format(self.mercure_hub, self._create_consumer_query_string())
-        return requests.get(url, stream=True)
+
+        headers = {}
+        if self.jwt_token is not None:
+            headers = {'Authorization': f'Bearer ' + self.jwt_token}
+
+        return requests.get(url, stream=True, headers=headers)
 
     def _create_consumer_query_string(self):
         """
