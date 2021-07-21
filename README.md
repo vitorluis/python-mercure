@@ -63,7 +63,7 @@ def callback(message):
     print(message.data)
 
 
-c = Consumer('http://127.0.0.1:3000/.well-known/mercure', ['mytopicname'], callback)
+c = Consumer('http://127.0.0.1:3000/.well-known/mercure', ['mytopicname'], callback, optional_jwt_token)
 c.start_consumption()
 ```
 
