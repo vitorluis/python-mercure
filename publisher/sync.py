@@ -11,7 +11,7 @@ from .publisher import Publisher
 
 class SyncPublisher(Publisher):
 
-    def publish(self, message: Message) -> str:
+    def publish(self, message: Message, timeout: float) -> str:
         # check the parameters of the request
         self._check_parameters(message)
 
@@ -19,7 +19,8 @@ class SyncPublisher(Publisher):
         response = requests.post(
             self.mercure_hub,
             Publisher._get_form_data(message),
-            headers=self._get_request_headers()
+            headers=self._get_request_headers(),
+            timeout=timeout
         )
 
         if response.status_code == 403:
